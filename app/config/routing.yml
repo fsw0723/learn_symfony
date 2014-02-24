@@ -1,4 +1,5 @@
-acme_hello:
-    resource: "@AcmeHelloBundle/Resources/config/routing.yml"
+event:
+    resource: "@EventBundle/Resources/config/routing.yml"
     prefix:   /
+
 
