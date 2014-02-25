@@ -8,7 +8,7 @@ security:
 
     providers:
         database_user:
-          entity: {class: UserBundle:User, property: username}
+          entity: {class: UserBundle:User}
 
     firewalls:
 

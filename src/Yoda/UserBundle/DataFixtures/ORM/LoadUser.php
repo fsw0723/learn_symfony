@@ -17,10 +17,12 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
     {
         $user = new User();
         $user->setUsername('user');
+        $user->setEmail('user@user.com');
         $user->setPassword($this->encodePassword($user, 'userpass'));
 
         $admin = new User();
         $admin->setUsername('admin');
+        $admin->setEmail('admin@admin.com');
         $admin->setPassword($this->encodePassword($admin, 'adminpass'));
         $admin->setRoles(array('ROLE_ADMIN'));
 
