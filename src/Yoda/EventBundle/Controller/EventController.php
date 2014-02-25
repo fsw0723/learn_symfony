@@ -4,6 +4,7 @@ namespace Yoda\EventBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 use Yoda\EventBundle\Entity\Event;
 use Yoda\EventBundle\Form\EventType;
@@ -17,6 +18,7 @@ class EventController extends Controller
 
     /**
      * Lists all Event entities.
+     * @Route("/", name="event")
      *
      */
     public function indexAction()
