@@ -45,6 +45,11 @@ class User implements AdvancedUserInterface
     private $password;
 
     /**
+     *
+     */
+    private $plainPassword;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="salt", type="string", length=255)
@@ -117,6 +122,23 @@ class User implements AdvancedUserInterface
     }
 
     /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
      * Set password
      *
      * @param string $password
@@ -164,7 +186,7 @@ class User implements AdvancedUserInterface
 
     public function __construct()
     {
-        $this->salt = base_convert(sha1(uniqid(mt_rand, true)), 16, 36);
+        $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
     }
 
     /**
@@ -204,7 +226,7 @@ class User implements AdvancedUserInterface
      */
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
+        $this->setPlainPassword(null);
     }
 
 
