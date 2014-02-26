@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90148ca1-8758-4fbb-a54b-9b7625dc4c06" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Yoda/UserBundle/Controller/RegisterController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Yoda/UserBundle/Form/RegisterFormType.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Yoda/UserBundle/Resources/views/Register/register.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Yoda/UserBundle/Controller/RegisterController.php" afterPath="$PROJECT_DIR$/src/Yoda/UserBundle/Controller/RegisterController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Yoda/UserBundle/Form/RegisterFormType.php" afterPath="$PROJECT_DIR$/src/Yoda/UserBundle/Form/RegisterFormType.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Yoda/UserBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/Yoda/UserBundle/Entity/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Yoda/UserBundle/Resources/views/Login/login.html.twig" afterPath="$PROJECT_DIR$/src/Yoda/UserBundle/Resources/views/Login/login.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Yoda/EventBundle/Resources/public/css/main.css" afterPath="$PROJECT_DIR$/src/Yoda/EventBundle/Resources/public/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Yoda/UserBundle/Resources/views/Register/register.html.twig" afterPath="$PROJECT_DIR$/src/Yoda/UserBundle/Resources/views/Register/register.html.twig" />
     </list>
     <ignored path="path.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,7 +31,7 @@
       <file leaf-file-name="LoadUser.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Yoda/UserBundle/DataFixtures/ORM/LoadUser.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="0" selection-start="991" selection-end="1227" vertical-scroll-proportion="-8.625" vertical-offset="273" max-vertical-offset="870">
+            <state line="30" column="24" selection-start="982" selection-end="982" vertical-scroll-proportion="-7.375" vertical-offset="273" max-vertical-offset="870">
               <folding>
                 <element signature="e#52#102#0" expanded="true" />
               </folding>
@@ -55,7 +51,7 @@
       <file leaf-file-name="RegisterController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Yoda/UserBundle/Controller/RegisterController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="45" selection-start="1195" selection-end="1195" vertical-scroll-proportion="0.6985294" vertical-offset="225" max-vertical-offset="810">
+            <state line="12" column="79" selection-start="524" selection-end="524" vertical-scroll-proportion="0.42857143" vertical-offset="15" max-vertical-offset="1005">
               <folding>
                 <element signature="e#46#103#0" expanded="true" />
               </folding>
@@ -66,7 +62,7 @@
       <file leaf-file-name="RegisterFormType.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Yoda/UserBundle/Form/RegisterFormType.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="3" selection-start="700" selection-end="700" vertical-scroll-proportion="-11.875" vertical-offset="45" max-vertical-offset="525">
+            <state line="15" column="49" selection-start="496" selection-end="496" vertical-scroll-proportion="-6.25" vertical-offset="45" max-vertical-offset="585">
               <folding />
             </state>
           </provider>
@@ -75,8 +71,10 @@
       <file leaf-file-name="User.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Yoda/UserBundle/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="233" column="28" selection-start="4127" selection-end="4127" vertical-scroll-proportion="-3.8" vertical-offset="3275" max-vertical-offset="4785">
-              <folding />
+            <state line="15" column="28" selection-start="447" selection-end="447" vertical-scroll-proportion="-4.5" vertical-offset="0" max-vertical-offset="4980">
+              <folding>
+                <element signature="e#42#74#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,7 +82,16 @@
       <file leaf-file-name="register.html.twig" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Yoda/UserBundle/Resources/views/Register/register.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="43" selection-start="543" selection-end="543" vertical-scroll-proportion="-5.875" vertical-offset="99" max-vertical-offset="495">
+            <state line="8" column="39" selection-start="198" selection-end="198" vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="540">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html.twig" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="37" column="1" selection-start="1063" selection-end="1063" vertical-scroll-proportion="-12.291667" vertical-offset="260" max-vertical-offset="705">
               <folding />
             </state>
           </provider>
@@ -130,9 +137,9 @@
         <option value="$USER_HOME$/Downloads/Starting in Symfony2 - Episode 2/symfony2-ep2-master/finish/src/Yoda/UserBundle/Resources/views/Register/register.html.twig" />
         <option value="$PROJECT_DIR$/src/Yoda/EventBundle/Resources/public/css/main.css" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-        <option value="$PROJECT_DIR$/src/Yoda/UserBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/Yoda/UserBundle/Resources/views/Register/register.html.twig" />
         <option value="$PROJECT_DIR$/src/Yoda/UserBundle/Form/RegisterFormType.php" />
+        <option value="$PROJECT_DIR$/src/Yoda/UserBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/Yoda/UserBundle/Controller/RegisterController.php" />
       </list>
     </option>
@@ -770,13 +777,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="23" selection-start="572" selection-end="572" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Yoda/UserBundle/Entity/UserRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="0" selection-start="342" selection-end="342" vertical-scroll-proportion="6.25" vertical-offset="285" max-vertical-offset="915">
@@ -854,22 +854,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/Controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1194" selection-end="1194" vertical-scroll-proportion="-22.166666" vertical-offset="83" max-vertical-offset="705">
-          <folding>
-            <marker date="1393341629000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1393341629000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1393341629000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1393341629000" expanded="true" signature="-1:-1" placeholder="{%- if block('title') ...%}" />
-            <marker date="1393341629000" expanded="true" signature="-1:-1" placeholder="{% block stylesheets ...%}" />
-            <marker date="1393341629000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1393341629000" expanded="true" signature="-1:-1" placeholder="{% if app.session.flashBag.has('success') ...%}" />
-            <marker date="1393341629000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1393341629000" expanded="true" signature="-1:-1" placeholder="{% for msg in app.session.flashBag.get('success') ...%}" />
-            <marker date="1393341629000" expanded="true" signature="-1:-1" placeholder="{% block body ...%}" />
-            <marker date="1393341629000" expanded="true" signature="-1:-1" placeholder="{% block javascripts ...%}" />
-          </folding>
+        <state line="160" column="20" selection-start="5345" selection-end="5345" vertical-scroll-proportion="-5.6666665" vertical-offset="1994" max-vertical-offset="3690">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Yoda/UserBundle/Resources/views/Register/register.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="39" selection-start="198" selection-end="198" vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="540">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -880,46 +875,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Yoda/UserBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="28" selection-start="447" selection-end="447" vertical-scroll-proportion="-4.5" vertical-offset="0" max-vertical-offset="4980">
+          <folding>
+            <element signature="e#42#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Yoda/UserBundle/Form/RegisterFormType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="49" selection-start="496" selection-end="496" vertical-scroll-proportion="-6.25" vertical-offset="45" max-vertical-offset="585">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="1" selection-start="1063" selection-end="1063" vertical-scroll-proportion="-12.291667" vertical-offset="260" max-vertical-offset="705">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="8" selection-start="306" selection-end="306" vertical-scroll-proportion="0.33251834" vertical-offset="74" max-vertical-offset="540">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Yoda/UserBundle/DataFixtures/ORM/LoadUser.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="991" selection-end="1227" vertical-scroll-proportion="-8.625" vertical-offset="273" max-vertical-offset="870">
+        <state line="30" column="24" selection-start="982" selection-end="982" vertical-scroll-proportion="-7.375" vertical-offset="273" max-vertical-offset="870">
           <folding>
             <element signature="e#52#102#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Yoda/UserBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="233" column="28" selection-start="4127" selection-end="4127" vertical-scroll-proportion="-3.8" vertical-offset="3275" max-vertical-offset="4785">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Yoda/UserBundle/Resources/views/Register/register.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="43" selection-start="543" selection-end="543" vertical-scroll-proportion="-5.875" vertical-offset="99" max-vertical-offset="495">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Yoda/UserBundle/Form/RegisterFormType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="3" selection-start="700" selection-end="700" vertical-scroll-proportion="-11.875" vertical-offset="45" max-vertical-offset="525">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="160" column="20" selection-start="5345" selection-end="5345" vertical-scroll-proportion="-5.6666665" vertical-offset="1994" max-vertical-offset="3690">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Yoda/UserBundle/Controller/RegisterController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="45" selection-start="1195" selection-end="1195" vertical-scroll-proportion="0.6985294" vertical-offset="225" max-vertical-offset="810">
+        <state line="12" column="79" selection-start="524" selection-end="524" vertical-scroll-proportion="0.42857143" vertical-offset="15" max-vertical-offset="1005">
           <folding>
             <element signature="e#46#103#0" expanded="true" />
           </folding>

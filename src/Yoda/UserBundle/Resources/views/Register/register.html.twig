@@ -7,22 +7,25 @@
                 <h1>Register</h1>
 
                 <form action="{{ path('register') }}" method="POST">
+
                     {{ form_errors(form) }}
 
                     {{ form_row(form.username) }}
                     {{ form_row(form.email) }}
+
                     {{ form_row(form.plainPassword.first, {
-                        'label': 'Password'
+                    'label': 'Password'
                     }) }}
                     {{ form_row(form.plainPassword.second, {
                     'label': 'Repeat Password'
                     }) }}
+
                     {{ form_rest(form) }}
 
-                    <input type="submit" value="Register"/>
+                    <input type="submit" value="Register!"/>
                 </form>
+
             </section>
         </article>
     </section>
-
 {% endblock %}

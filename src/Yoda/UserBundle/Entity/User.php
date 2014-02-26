@@ -3,19 +3,23 @@
 namespace Yoda\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\Role\Role;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Serializable;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * User
+ * Yoda\UserBundle\Entity\User
  *
  * @ORM\Table(name="yoda_user")
  * @ORM\Entity(repositoryClass="Yoda\UserBundle\Entity\UserRepository")
+ * @UniqueEntity(fields="username", message="That username is taken!")
+ * @UniqueEntity(fields="email", message="That email is taken!")
  */
-class User implements AdvancedUserInterface
+class User implements AdvancedUserInterface, Serializable
 {
     /**
-     * @var integer
+     * @var integer $id
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -24,41 +28,32 @@ class User implements AdvancedUserInterface
     private $id;
 
     /**
-     * @var string
+     * @var string $username
      *
      * @ORM\Column(name="username", type="string", length=255)
+     * @Assert\NotBlank(message="Put in a username of course!")
+     * @Assert\Length(min=2, minMessage="[0,+Inf] Enter something longer!")
      */
     private $username;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255)
-     */
-    private $email;
-
-    /**
-     * @var string
+     * @var string $password
      *
      * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
 
     /**
-     *
-     */
-    private $plainPassword;
-
-    /**
-     * @var string
+     * @var string $salt
      *
      * @ORM\Column(name="salt", type="string", length=255)
      */
     private $salt;
 
     /**
+     * @var array
      *
-     * @ORM\Column(name="roles", type="array")
+     * @ORM\Column(type="array")
      */
     private $roles = array();
 
@@ -69,22 +64,27 @@ class User implements AdvancedUserInterface
      */
     private $isActive = true;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Email
+     */
+    private $email;
 
     /**
-     * @param boolean $isActive
+     * @Assert\NotBlank
+     * @Assert\Regex(
+     *      pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/",
+     *      message="Please use at least on upper case letter, one lower case letter, and one number"
+     * )
      */
-    public function setIsActive($isActive)
-    {
-        $this->isActive = $isActive;
-        return $this;
-    }
+    private $plainPassword;
 
-    /**
-     * @return boolean
-     */
-    public function getIsActive()
+    public function __construct()
     {
-        return $this->isActive;
+        $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
     }
 
 
@@ -119,23 +119,6 @@ class User implements AdvancedUserInterface
     public function getUsername()
     {
         return $this->username;
-    }
-
-    /**
-     * @param mixed $plainPassword
-     */
-    public function setPlainPassword($plainPassword)
-    {
-        $this->plainPassword = $plainPassword;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
     }
 
     /**
@@ -184,51 +167,39 @@ class User implements AdvancedUserInterface
         return $this->salt;
     }
 
-    public function __construct()
-    {
-        $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
-    }
-
-    /**
-     * Returns the roles granted to the user.
-     *
-     * <code>
-     * public function getRoles()
-     * {
-     *     return array('ROLE_USER');
-     * }
-     * </code>
-     *
-     * Alternatively, the roles might be stored on a ``roles`` property,
-     * and populated in any number of different ways when the user object
-     * is created.
-     *
-     * @return Role[] The user roles
-     */
     public function getRoles()
     {
         $roles = $this->roles;
         $roles[] = 'ROLE_USER';
+
         return array_unique($roles);
     }
 
     public function setRoles(array $roles)
     {
         $this->roles = $roles;
-        return $roles;
     }
 
-    /**
-     * Removes sensitive data from the user.
-     *
-     * This is important if, at any given point, sensitive information like
-     * the plain-text password is stored on this object.
-     */
     public function eraseCredentials()
     {
         $this->setPlainPassword(null);
     }
 
+    /**
+     * @return boolean
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param boolean $isActive
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+    }
 
     /**
      * Checks whether the user's account has expired.
@@ -291,6 +262,37 @@ class User implements AdvancedUserInterface
     }
 
     /**
+     * (PHP 5 &gt;= 5.1.0)<br/>
+     * String representation of object
+     * @link http://php.net/manual/en/serializable.serialize.php
+     * @return string the string representation of the object or null
+     */
+    public function serialize()
+    {
+        return serialize(array(
+            'id' => $this->getId(),
+        ));
+    }
+
+    /**
+     * (PHP 5 &gt;= 5.1.0)<br/>
+     * Constructs the object
+     * @link http://php.net/manual/en/serializable.unserialize.php
+     * @param string $serialized <p>
+     * The string representation of the object.
+     * </p>
+     * @return mixed the original value unserialized.
+     */
+    public function unserialize($serialized)
+    {
+        $data = unserialize($serialized);
+
+        $this->id = $data['id'];
+    }
+
+
+
+    /**
      * Set email
      *
      * @param string $email
@@ -306,10 +308,20 @@ class User implements AdvancedUserInterface
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
         return $this->email;
+    }
+
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
     }
 }

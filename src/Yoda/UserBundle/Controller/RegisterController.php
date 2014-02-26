@@ -9,6 +9,8 @@ use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\HttpFoundation\Request;
 use Yoda\UserBundle\Entity\User;
 use Yoda\UserBundle\Form\RegisterFormType;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class RegisterController extends Controller{
     /**
@@ -29,6 +31,9 @@ class RegisterController extends Controller{
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($user);
                 $em->flush();
+                $this->authenticateUser($user);
+
+                $request->getSession()->getFlashBag()->add('success', 'Registration is a success');
 
                 $url = $this->generateUrl('event');
 
@@ -44,6 +49,14 @@ class RegisterController extends Controller{
     {
         $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
         return $encoder->encodePassword($plainPassword, $user->getSalt());
+    }
+
+    private function authenticateUser(UserInterface $user)
+    {
+        $providerKey = 'secured_area'; // your firewall name
+        $token = new UsernamePasswordToken($user, null, $providerKey, $user->getRoles());
+
+        $this->container->get('security.context')->setToken($token);
     }
 
 }
