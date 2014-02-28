@@ -21,6 +21,8 @@ security:
                 path:  /logout
                 target: /
             anonymous: ~
+            remember_me:
+              key: Remeber me key
             #http_basic:
             #    realm: "Secured Demo Area"
 
