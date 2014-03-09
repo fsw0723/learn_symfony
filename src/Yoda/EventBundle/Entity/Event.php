@@ -4,6 +4,7 @@ namespace Yoda\EventBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Yoda\UserBundle\Entity\User;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Event
@@ -63,6 +64,24 @@ class Event
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
     protected $owner;
+
+    /**
+     * @Gedmo\Slug(fields={"name"}, updatable=false)
+     * @ORM\Column(length=255, unique=true)
+     */
+    protected $slug;
+
+    /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $created;
+
+    /**
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    private $updated;
 
     /**
      * Get id
@@ -204,6 +223,56 @@ class Event
     {
         return $this->owner;
     }
+
+    /**
+     * @param mixed $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param mixed $created
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param mixed $updated
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+
 
 
 }
