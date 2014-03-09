@@ -2,8 +2,9 @@
 
 namespace Yoda\EventBundle\Controller;
 
+use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Yoda\EventBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 use Yoda\EventBundle\Entity\Event;
@@ -42,6 +43,12 @@ class EventController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $user = $this->getUser();
+            $entity->setOwner($user);
+
+            $events = $this->getUser()->getEvents();
+            $events[] = $entity;
+            $this->getUser()->setEvents($entity);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -124,6 +131,8 @@ class EventController extends Controller
             throw $this->createNotFoundException('Unable to find Event entity.');
         }
 
+        $this->checkOwnerSecurity($entity);
+
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
@@ -165,6 +174,7 @@ class EventController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Event entity.');
         }
+        $this->checkOwnerSecurity($entity);
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
@@ -221,5 +231,17 @@ class EventController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+
+    /**
+     * @param $entity
+     * @throws \Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException
+     */
+    public function checkOwnerSecurity($entity)
+    {
+        $user = $this->getUser();
+        if ($user != $entity->getOwner()) {
+            throw new AccessDeniedException('You are not the owner!!!');
+        }
     }
 }

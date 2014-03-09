@@ -2,19 +2,21 @@
 
 namespace Yoda\UserBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Yoda\UserBundle\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
-class LoadUserData implements FixtureInterface, ContainerAwareInterface
+class LoadUserData extends AbstractFixture implements ContainerAwareInterface, OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
      */
     public function load(ObjectManager $manager)
     {
+
         $user = new User();
         $user->setUsername('user');
         $user->setEmail('user@user.com');
@@ -27,6 +29,7 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $admin->setRoles(array('ROLE_ADMIN'));
 
         $manager->persist($user);
+        $this->addReference('user-user', $user);
         $manager->persist($admin);
         $manager->flush();
     }
@@ -49,5 +52,9 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $this->container = $container;
     }
 
+    public function getOrder()
+    {
+        return 10;
+    }
 
 }

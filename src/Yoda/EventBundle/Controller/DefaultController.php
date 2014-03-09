@@ -2,8 +2,8 @@
 
 namespace Yoda\EventBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Yoda\EventBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {

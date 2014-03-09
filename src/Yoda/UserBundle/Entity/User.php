@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Serializable;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -42,6 +43,11 @@ class User implements AdvancedUserInterface, Serializable
      * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Yoda\EventBundle\Entity\Event", mappedBy="owner")
+     */
+    protected $events;
 
     /**
      * @var string $salt
@@ -85,6 +91,7 @@ class User implements AdvancedUserInterface, Serializable
     public function __construct()
     {
         $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
+        $this->events = new ArrayCollection();
     }
 
 
@@ -289,6 +296,17 @@ class User implements AdvancedUserInterface, Serializable
 
         $this->id = $data['id'];
     }
+
+    public function setEvents($events)
+    {
+        $this->events = $events;
+    }
+
+    public function getEvents()
+    {
+        return $this->events;
+    }
+
 
 
 

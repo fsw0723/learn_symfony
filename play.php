@@ -38,3 +38,9 @@ $event->setDetails('detail info');
 $em = $container->get('doctrine')->getManager();
 $em->persist($event);
 $em->flush();
+
+$user = $em->getRepository('UserBundle:User')
+    ->findOneBy(array('username' => 'user'));
+var_dump($user->getEvents());
+
+
