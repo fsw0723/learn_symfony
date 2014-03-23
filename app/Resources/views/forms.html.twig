@@ -1,0 +1,33 @@
+{% block form_row %}
+    {% spaceless %}
+        <div class="control-group error">
+            {{ form_label(form) }}
+            <div class="controls">
+                {{ form_widget(form) }}
+                {{ form_errors(form) }}
+            </div>
+        </div>
+    {% endspaceless %}
+{% endblock form_row %}
+
+{% block form_errors %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+            <span class="help-inline">
+                {% for error in errors %}
+                    {{ error.message }}
+                {% endfor %}
+            </span>
+        {% endif %}
+    {% endspaceless %}
+{% endblock form_errors %}
+
+{% block repeated_row %}
+    {% spaceless %}
+        <div class="control-group {{ form.first.vars.errors|length > 0? 'error' : '' }}">
+            {{form_row(form.first, {'label': firstLabel|default}) }}
+            {{form_row(form.second, {'label': secondLabel|default}) }}
+
+        </div>
+    {% endspaceless %}
+{% endblock repeated_row %}

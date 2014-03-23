@@ -6,19 +6,16 @@
             <section>
                 <h1>Register</h1>
 
-                <form action="{{ path('register') }}" method="POST">
+                <form action="{{ path('register') }}" method="POST" class="form-horizontal">
 
                     {{ form_errors(form) }}
 
                     {{ form_row(form.username) }}
                     {{ form_row(form.email) }}
+                    {{ form_row(form.plainPassword,
+                    {'firstLabel': 'Password',
+                    'secondLabel': 'Repeat Password'}) }}
 
-                    {{ form_row(form.plainPassword.first, {
-                    'label': 'Password'
-                    }) }}
-                    {{ form_row(form.plainPassword.second, {
-                    'label': 'Repeat Password'
-                    }) }}
 
                     {{ form_rest(form) }}
 
