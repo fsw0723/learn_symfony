@@ -50,7 +50,7 @@ class EventController extends Controller
 
             $events = $this->getUser()->getEvents();
             $events[] = $entity;
-            $this->getUser()->setEvents($entity);
+            $this->getUser()->setEvents($events);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
